@@ -1,11 +1,20 @@
 <template>
   <!--  <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-  <h1>seznam poznámek</h1>
+  <h1 :style="{color: inputValue.length<5?
+  'darkred':
+  'darkblue',
+  fontSize: inputValue.length<10?
+  '2rem':
+  '4rem'}"
+  >seznam poznámek</h1>
+  <div>
+    <span v-if="notes.length===0">Nejsou žádné poznámky</span>
+  </div>
   <div>
     <input
         type="text"
         :placeholder="placeholderString"
-        :value="inputValue"
+        v-model="inputValue"
         @input="newNote"
         @keypress.enter="addNewNote"
     />
@@ -40,12 +49,12 @@ export default {
     }
   },
   methods: {
-    newNote (event) {
-      console.log('newNote')
-      this.inputValue = event.target.value
-      this.counter++
-      console.log(this.notes)
-    },
+    // newNote (event) {
+    //   console.log('newNote')
+    //   this.inputValue = event.target.value
+    //   this.counter++
+    //   console.log(this.notes)
+    // },
     addNewNote () {
       console.log('addNewNote inputValue.trim().length=', this.inputValue.trim().length)
       if (this.inputValue.trim().length > 0) {
