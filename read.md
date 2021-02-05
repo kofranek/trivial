@@ -1,3 +1,3 @@
 master text
 
-ggit 
+ggit w
